@@ -1,0 +1,30 @@
+
+public class Solution {
+	public static String removeHelper(String s, String ans){
+		// Base Case
+		if(s.length() == 0){
+			return ans;
+		}
+		// will skip the character if its repeating i.e character of starting of s and ending of ans is same
+		if (ans.charAt(ans.length()-1) == s.charAt(0)){
+			return removeHelper(s.substring(1), ans);
+		}
+		// add the character otherwise
+		else {
+			return removeHelper(s.substring(1), ans+s.charAt(0));
+		}
+	}
+	public static String removeConsecutiveDuplicates(String s) {
+
+		// Write your code here
+		if (s.length()>0) {
+			String ans = ""+s.charAt(0);
+			// Using Helper function for recursion
+			return removeHelper(s.substring(1), ans);
+		}
+		else {
+			return s;
+		}
+	}
+
+}
